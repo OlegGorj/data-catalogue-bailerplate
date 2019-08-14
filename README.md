@@ -1,10 +1,9 @@
 
-# Bailer-plate for data-catalogue set of APIs and supporting services
+# Boilerplate for data-catalogue set of APIs and supporting services
 
 Working prototype of Multi Cloud API-centric approach to access and manage the data
 
 Repos contains deployment and services code Azure and GCP clouds.
-
 
 # Build and Deploy
 
