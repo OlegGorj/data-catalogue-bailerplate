@@ -5,3 +5,4 @@ appengine-generated/
 ./auth/*
 ./common/config.*
 ./config/*
+./__pycache__
