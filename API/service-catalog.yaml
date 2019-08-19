@@ -1,0 +1,90 @@
+swagger: "2.0"
+################################################################################
+#                              API Information                                 #
+################################################################################
+info:
+  description: "Catalog API designed to support Data Discovery Services"
+  version: "1.0.0"
+  title: "Data Catalog API"
+  termsOfService: ""
+
+host: "service-catalog-dot-ibm-teck-komatsu930e.appspot.com"
+basePath: "/api/v1"
+tags:
+- name: "Asset"
+  description: "Access data assets"
+- name: "Catalog"
+  description: "Catalog of availble data assets"
+
+schemes:
+- "https"
+
+################################################################################
+#                                           Paths                              #
+################################################################################
+paths:
+  /:
+    get:
+      tags:
+      - "Catalog"
+      summary: "blank page"
+      responses:
+        200:
+          description: Success response
+
+  /catalog:
+    get:
+      tags:
+      - "Catalog"
+      summary: "List availble datasets"
+      consumes:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Asset"
+
+  /catalog/asset/{asset_id}:
+    get:
+      tags:
+      - "Asset"
+      summary: "Retrive metadata for given dataset"
+      produces:
+      - "application/json"
+      parameters:
+      - name: asset_id
+        in: path
+        type: string
+        required: true
+        description: "example: 0b7e1962593b4fc78efa9ec32f665cf4e"
+      - name: format
+        in: path
+        type: string
+        required: true
+        description: "example: json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Asset"
+
+
+################################################################################
+#                                 Security Definitions                         #
+################################################################################
+
+
+################################################################################
+#                                 Definitions                                  #
+################################################################################
+definitions:
+  Asset:
+    type: "object"
+    properties:
+      name:
+        type: "string"
